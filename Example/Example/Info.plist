@@ -32,5 +32,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>To capture photos!</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>To record sound &amp; voice.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To import your crazy collections from photo library.</string>
 </dict>
 </plist>
