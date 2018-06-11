@@ -687,11 +687,36 @@
         case UIDeviceOrientationLandscapeRight:
             return AVCaptureVideoOrientationLandscapeLeft;
             
-        default:
-            break;
+        default: {
+            UIInterfaceOrientation interfaceOrientation = [self.class _currentInterfaceOrientation];
+            return [self.class _videoOrientationFromInterfaceOrientation:interfaceOrientation];
+        }
     }
     
     return AVCaptureVideoOrientationPortrait;
+}
+
++(UIInterfaceOrientation)_currentInterfaceOrientation {
+    return [UIApplication sharedApplication].statusBarOrientation;
+}
+
++(AVCaptureVideoOrientation)_videoOrientationFromInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    switch (interfaceOrientation) {
+        case UIInterfaceOrientationLandscapeLeft:
+            return AVCaptureVideoOrientationLandscapeLeft;
+            
+        case UIInterfaceOrientationLandscapeRight:
+            return AVCaptureVideoOrientationLandscapeRight;
+            
+        case UIInterfaceOrientationPortrait:
+            return AVCaptureVideoOrientationPortrait;
+            
+        case UIInterfaceOrientationPortraitUpsideDown:
+            return AVCaptureVideoOrientationPortraitUpsideDown;
+            
+        case UIInterfaceOrientationUnknown:
+            return AVCaptureVideoOrientationPortrait;
+    }
 }
 
 #pragma mark - Camera Permissions
